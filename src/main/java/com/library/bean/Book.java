@@ -13,11 +13,11 @@ import java.util.Date;
  */
 @Data
 public class Book implements Serializable {
-    private long book_id;
+    private long bookId;
     private String name;
     private String author;
     private String publish;
-    private String ISBN;
+    private String isbn;
     private String introduction;
     private String language;
     private BigDecimal price;

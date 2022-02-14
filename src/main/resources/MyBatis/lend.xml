@@ -5,15 +5,15 @@
     <update id="returnBookOne" parameterType="long">
         update lend_list
         set back_date=sysdate()
-        where book_id = #{book_id}
-          and reader_id = #{reader_id}
+        where book_id = #{bookId}
+          and reader_id = #{readerId}
           and back_date = null;
     </update>
 
     <update id="returnBookTwo" parameterType="long">
         update book_info
         set number =(number + 1)
-        where book_id = #{book_id};
+        where book_id = #{bookId};
     </update>
 
     <insert id="lendBookOne">
@@ -28,7 +28,7 @@
     <update id="lendBookTwo" parameterType="long">
         update book_info
         set number =(number - 1)
-        where book_id = #{book_id};
+        where book_id = #{bookId};
     </update>
 
     <select id="lendList" resultType="com.library.bean.Lend">
@@ -39,12 +39,12 @@
     <select id="myLendList" resultType="com.library.bean.Lend" parameterType="long">
         select *
         from lend_list
-        where reader_id = #{reader_id};
+        where reader_id = #{readerId};
     </select>
 
     <delete id="deleteLend" parameterType="long">
         delete
         from lend_list
-        where ser_num = #{ser_num};
+        where ser_num = #{serNum};
     </delete>
 </mapper>

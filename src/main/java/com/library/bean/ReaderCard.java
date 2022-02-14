@@ -11,7 +11,7 @@ import java.io.Serializable;
  */
 @Data
 public class ReaderCard implements Serializable {
-    private long reader_id;
+    private long readerId;
     private String username;
     private String password;
 }

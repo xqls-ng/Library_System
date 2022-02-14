@@ -145,7 +145,7 @@ public class LoginController {
     @RequestMapping("/reader_repasswd_do")
     public String reReaderPasswdDo(HttpServletRequest request,String oldPasswd,String newPasswd,String reNewPasswd,RedirectAttributes redirectAttributes){
         ReaderCard reader = (ReaderCard) request.getSession().getAttribute("readerCard");
-        long id = reader.getReader_id();
+        long id = reader.getReaderId();
         String password = loginService.getReaderPassword(id);
         if (password.equals(oldPasswd)){
             if (loginService.readerRePassword(id,newPasswd)){

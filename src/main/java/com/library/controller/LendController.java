@@ -46,7 +46,7 @@ public class LendController {
     public ModelAndView myLend(HttpServletRequest request) {
         ReaderCard readercard = (ReaderCard) request.getSession().getAttribute("readercard");
         ModelAndView modelAndView = new ModelAndView("reader_lend_list");
-        modelAndView.addObject("list", lendService.myLendList(readercard.getReader_id()));
+        modelAndView.addObject("list", lendService.myLendList(readercard.getReaderId()));
         return modelAndView;
     }
 
@@ -64,7 +64,7 @@ public class LendController {
     @RequestMapping("/lendbook.html")
     public String bookLend(HttpServletRequest request, RedirectAttributes redirectAttributes) {
         long bookId = Long.parseLong(request.getParameter("bookId"));
-        long readerId = ((ReaderCard) request.getSession().getAttribute("readercard")).getReader_id();
+        long readerId = ((ReaderCard) request.getSession().getAttribute("readercard")).getReaderId();
         if (lendService.lendBook(bookId, readerId)) {
             redirectAttributes.addFlashAttribute("succ", "图书借阅成功!");
         } else {
@@ -76,7 +76,7 @@ public class LendController {
     @RequestMapping("/returnbook.html")
     public String bookReturn(HttpServletRequest request, RedirectAttributes redirectAttributes) {
         long bookId = Long.parseLong(request.getParameter("bookId"));
-        long readerId = ((ReaderCard) request.getSession().getAttribute("readercard")).getReader_id();
+        long readerId = ((ReaderCard) request.getSession().getAttribute("readercard")).getReaderId();
         if (lendService.returnBook(bookId, readerId)) {
             redirectAttributes.addFlashAttribute("succ", "图书归还成功!");
         } else {

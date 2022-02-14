@@ -139,12 +139,12 @@ public class BookController {
     public ModelAndView readerBooks(HttpServletRequest request) {
         ArrayList<Book> books = bookService.getAllBooks();
         ReaderCard readerCard = (ReaderCard) request.getSession().getAttribute("readerCard");
-        ArrayList<Lend> myAllLendList = lendService.myLendList(readerCard.getReader_id());
+        ArrayList<Lend> myAllLendList = lendService.myLendList(readerCard.getReaderId());
         ArrayList<Long> myLendList = new ArrayList<>();
         for (Lend lend : myAllLendList) {
             //是否已归还
-            if (lend.getBack_date() == null) {
-                myLendList.add(lend.getBook_id());
+            if (lend.getBackDate() == null) {
+                myLendList.add(lend.getBookId());
             }
         }
         ModelAndView modelAndView = new ModelAndView("reader_books");

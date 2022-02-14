@@ -23,28 +23,28 @@ public class LendDao {
 
     private final static String NAMESPACE = "com.library.dao.LendDao.";
 
-    public int returnBookOne(final long book_id, long reader_id) {
+    public int returnBookOne(final long bookId, long readerId) {
         Map<String, Object> map = new HashMap<>();
-        map.put("book_id", book_id);
-        map.put("reader_id", reader_id);
+        map.put("bookId", bookId);
+        map.put("readerId", readerId);
         return sqlSessionTemplate.update(NAMESPACE + "returnBookOne", map);
     }
 
     //更新图书剩余数量信息
-    public int returnBookTwo(final long book_id) {
-        return sqlSessionTemplate.update(NAMESPACE + "returnBookTwo", book_id);
+    public int returnBookTwo(final long bookId) {
+        return sqlSessionTemplate.update(NAMESPACE + "returnBookTwo", bookId);
     }
 
-    public int lendBookOne(final long book_id, final long reader_id) {
+    public int lendBookOne(final long bookId, final long readerId) {
         Map<String, Object> map = new HashMap<>();
-        map.put("book_id", book_id);
-        map.put("reader_id", reader_id);
+        map.put("bookId", bookId);
+        map.put("readerId", readerId);
         return sqlSessionTemplate.insert(NAMESPACE + "lendBookOne", map);
     }
 
     //更新图书剩余数量信息
-    public int lendBookTwo(final long book_id) {
-        return sqlSessionTemplate.update(NAMESPACE + "lendBookTwo", book_id);
+    public int lendBookTwo(final long bookId) {
+        return sqlSessionTemplate.update(NAMESPACE + "lendBookTwo", bookId);
     }
 
     public ArrayList<Lend> lendList() {
@@ -52,13 +52,13 @@ public class LendDao {
         return (ArrayList<Lend>) result;
     }
 
-    public ArrayList<Lend> myLendList(final long reader_id) {
-        List<Lend> result = sqlSessionTemplate.selectList(NAMESPACE + "myLendList", reader_id);
+    public ArrayList<Lend> myLendList(final long readerId) {
+        List<Lend> result = sqlSessionTemplate.selectList(NAMESPACE + "myLendList", readerId);
         return (ArrayList<Lend>) result;
     }
 
-    public int deleteLend(final long ser_num) {
-        return sqlSessionTemplate.delete(NAMESPACE + "deleteLend", ser_num);
+    public int deleteLend(final long serNum) {
+        return sqlSessionTemplate.delete(NAMESPACE + "deleteLend", serNum);
     }
 }
 

@@ -12,9 +12,9 @@ import java.util.Date;
  */
 @Data
 public class Lend implements Serializable {
-    private long ser_num;
-    private long book_id;
-    private long reader_id;
-    private Date lend_date;
-    private Date back_date;
+    private long serNum;
+    private long bookId;
+    private long readerId;
+    private Date lendDate;
+    private Date backDate;
 }

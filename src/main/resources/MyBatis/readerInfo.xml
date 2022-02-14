@@ -9,13 +9,13 @@
     <select id="findReaderInfoByReaderId" resultType="com.library.bean.ReaderInfo" parameterType="long">
         select *
         from reader_info
-        where reader_id = #{reader_id};
+        where reader_id = #{readerId};
     </select>
 
     <delete id="deleteReaderInfo" parameterType="long">
         delete
         from reader_info
-        where reader_id = #{reader_id};
+        where reader_id = #{readerId};
     </delete>
 
     <update id="editReaderInfo" parameterType="com.library.bean.ReaderInfo">
@@ -25,13 +25,13 @@
             birth=#{birth},
             address=#{address},
             phone=#{phone}
-        where reader_id = #{reader_id};
+        where reader_id = #{readerId};
     </update>
 
     <update id="editReaderCard" parameterType="com.library.bean.ReaderInfo">
         update reader_card
         set username=#{name}
-        where reader_id = #{reader_id};
+        where reader_id = #{readerId};
     </update>
 
     <insert id="addReaderInfo" parameterType="com.library.bean.ReaderInfo">

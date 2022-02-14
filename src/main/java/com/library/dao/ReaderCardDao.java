@@ -21,41 +21,41 @@ public class ReaderCardDao {
 
     private final static String NAMESPACE = "com.library.dao.ReaderCardDao.";
 
-    public int getIdMatchCount(final long reader_id, final String password) {
+    public int getIdMatchCount(final long readerId, final String password) {
         Map<String, Object> map = new HashMap<>();
-        map.put("reader_id", reader_id);
+        map.put("readerId", readerId);
         map.put("password", password);
         return sqlSessionTemplate.selectOne(NAMESPACE + "getIdMatchCount", map);
     }
 
     //需确认读者密码能否返回
-    public ReaderCard findReaderByReaderId(final long reader_id) {
-        return sqlSessionTemplate.selectOne(NAMESPACE + "findReaderByReaderId", reader_id);
+    public ReaderCard findReaderByReaderId(final long readerId) {
+        return sqlSessionTemplate.selectOne(NAMESPACE + "findReaderByReaderId", readerId);
     }
 
-    public int resetPassword(final long reader_id, final String newPassword) {
+    public int resetPassword(final long readerId, final String newPassword) {
         Map<String, Object> map = new HashMap<>();
-        map.put("reader_id", reader_id);
+        map.put("readerId", readerId);
         map.put("password", newPassword);
         return sqlSessionTemplate.update(NAMESPACE + "resetPassword", map);
     }
 
     public int addReaderCard(final ReaderInfo readerInfo, final String password) {
         String username = readerInfo.getName();
-        long reader_id = readerInfo.getReader_id();
+        long readerId = readerInfo.getReaderId();
         Map<String, Object> map = new HashMap<>();
-        map.put("reader_id", reader_id);
+        map.put("readerId", readerId);
         map.put("username", username);
         map.put("password", password);
         return sqlSessionTemplate.insert(NAMESPACE + "addReaderCard", map);
     }
 
-    public String getPassword(final long reader_id) {
-        return sqlSessionTemplate.selectOne(NAMESPACE + "getPassword", reader_id);
+    public String getPassword(final long readerId) {
+        return sqlSessionTemplate.selectOne(NAMESPACE + "getPassword", readerId);
     }
 
-    public int deleteReaderCard(final long reader_id) {
-        return sqlSessionTemplate.delete(NAMESPACE + "deleteReaderCard", reader_id);
+    public int deleteReaderCard(final long readerId) {
+        return sqlSessionTemplate.delete(NAMESPACE + "deleteReaderCard", readerId);
     }
 }
 

@@ -12,7 +12,7 @@ import java.util.Date;
  */
 @Data
 public class ReaderInfo implements Serializable {
-    private long reader_id;
+    private long readerId;
     private String name;
     private String sex;
     private Date birth;

@@ -24,12 +24,12 @@ public class ReaderInfoDao {
         return (ArrayList<ReaderInfo>) result;
     }
 
-    public ReaderInfo findReaderInfoByReaderId(final long reader_id) {
-        return sqlSessionTemplate.selectOne(NAMESPACE + "findReaderInfoByReaderId", reader_id);
+    public ReaderInfo findReaderInfoByReaderId(final long readerId) {
+        return sqlSessionTemplate.selectOne(NAMESPACE + "findReaderInfoByReaderId", readerId);
     }
 
-    public int deleteReaderInfo(final long reader_id) {
-        return sqlSessionTemplate.delete(NAMESPACE + "deleteReaderInfo", reader_id);
+    public int deleteReaderInfo(final long readerId) {
+        return sqlSessionTemplate.delete(NAMESPACE + "deleteReaderInfo", readerId);
     }
 
     public int editReaderInfo(final ReaderInfo readerInfo) {
